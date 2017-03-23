@@ -1,6 +1,7 @@
 // This loads the environment variables from the .env file
 require('dotenv-extended').load();
 var railway = require('./railwayHelper');
+var news = require('./newsHelper');
 
 var builder = require('botbuilder');
 var restify = require('restify');
@@ -33,3 +34,8 @@ bot.dialog('PNRStatus', function (session, args) {
 	matches: 'PNRStatus'
 });
 
+bot.dialog('TopNews', function (session, args) {
+  news.newsHelper(session, args);
+}).triggerAction({
+	matches: 'TopNews'
+});
