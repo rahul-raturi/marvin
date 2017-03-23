@@ -11,6 +11,7 @@ var spellService = require('./spell-service');
 // Setup Restify Server
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
+  console.log('%s listening to %s', server.name, server.url);
 });
 // Create connector and listen for messages
 var connector = new builder.ChatConnector({
