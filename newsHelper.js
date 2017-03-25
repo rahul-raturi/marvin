@@ -3,7 +3,7 @@ var util = require('./util');
 var builder = require('botbuilder');
 
 var newsHelper = function(session, args) {
-  if(args.intent.score > 0.99){
+  if(args.intent.score > 0.95){
           getNews(session, function(topNews){
               //messageUser(session,ttechcrunchopNews.articles[0].title);
               var newsCards = getallnewscards(session, topNews);
