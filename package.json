@@ -1,24 +1,21 @@
 {
-  "name": "botbuilder-sample-luis",
+  "name": "Marvin",
   "version": "1.0.0",
-  "description": "Bot Builder Sample - LUIS",
+  "description": "Chat bot with natural language processing support",
   "scripts": {
     "start": "node app.js"
   },
-  "author": "Microsoft Corp.",
   "license": "MIT",
   "keywords": [
-    "botbuilder",
     "bots",
     "chatbots",
-    "botbuilder-samples"
+	"railway",
+	"wikipedia",
+	"news"
   ],
-  "bugs": {
-    "url": "https://github.com/Microsoft/BotBuilder-Samples/issues"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/BotBuilder-Samples.git"
+    "url": "https://github.com/rahul-raturi/marvin"
   },
   "dependencies": {
     "bluebird": "^3.4.7",
