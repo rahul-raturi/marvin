@@ -1,12 +1,11 @@
 // This loads the environment variables from the .env file
 require('dotenv-extended').load();
-var railway = require('./railwayHelper');
-var news = require('./newsHelper');
+var railway = require('./util/railwayHelper');
+var news = require('./util/newsHelper');
+var spellService = require('./util/spell-service');
 
 var builder = require('botbuilder');
 var restify = require('restify');
-var Store = require('./store');
-var spellService = require('./spell-service');
 
 // Setup Restify Server
 var server = restify.createServer();
