@@ -2,6 +2,7 @@
 require('dotenv-extended').load();
 var railway = require('./util/railwayHelper');
 var news = require('./util/newsHelper');
+var wiki = require('./util/wikiHelper');
 var spellService = require('./util/spell-service');
 
 var builder = require('botbuilder');
@@ -38,4 +39,11 @@ bot.dialog('TopNews', function (session, args) {
   news.newsHelper(session, args);
 }).triggerAction({
 	matches: 'TopNews'
+});
+
+bot.dialog('Wiki', function (session, args) {
+	console.log('triggered');
+	wiki.wikiHelper(session, args);
+}).triggerAction({
+	matches: 'Wiki'
 });
