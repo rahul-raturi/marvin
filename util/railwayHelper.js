@@ -26,7 +26,7 @@ function pnrEnquiry(session, pnr, cb) {
 	var url = 'http://api.railwayapi.com/pnr_status/pnr/' + pnr + '/apikey/' + api_key;
 	request(url, function(error, response, body) {
 		if(error) {
-			util.messageUser(session, 'Some network error');
+			util.networkError(session);
 		}
 		if(response.statusCode !== 200) {
 			util.messageUser(session, 'Retry');

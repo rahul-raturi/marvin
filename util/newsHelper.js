@@ -29,7 +29,7 @@ function getNews(session, cb) {
 	console.log(url);
 	request(url, function(error, response, body) {
 		if(error) {
-			util.messageUser(session, 'Some network error');
+			util.networkError(session);
 		}
 		if(response.statusCode !== 200) {
 			util.messageUser(session, 'Retry');
