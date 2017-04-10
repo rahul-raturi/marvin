@@ -6,7 +6,7 @@ var newsdict = require('./newsDict');
 var newssource_lookup = newsdict.slug_lookup;
 
 var newsHelper = function(session, args) {
-  if(args.intent.score > 0.95){
+  if(args.intent.score > 0.98){
       // get news type i.e. top/popular/latest
       var newstype = getNewsType(session, args);
       //get news Source
