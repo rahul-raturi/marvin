@@ -9,7 +9,10 @@ var newsHelper = function(session, args) {
   if(args.intent.score > 0.95){
       // get news type i.e. top/popular/latest
       var newstype = getNewsType(session, args);
-        console.log(newstype);
+      //get news Source
+      var newssource = getNewsSource(session, args);
+      console.log(newstype);
+      console.log(newssource);
           getNews(session, function(topNews){
               var newsCards = getallnewscards(session, topNews);
               // create reply with Carousel AttachmentLayout
@@ -37,6 +40,34 @@ function getNewsType(session, args){
         }
     }
     return newstype;
+}
+
+function getNewsSource(session, args){
+    var newssource = "";
+    var entities = args.intent.entities;
+    for (entityinfo in entities){
+        if(entities[entityinfo]['type'] == 'news_source'){
+                newssource = entities[entityinfo]['entity'];
+                break;
+        }
+    }
+    // random news source selection if no news source detected
+    if(newssource == "")
+        newssource = fetch_random(newssource_lookup);
+    else    // news source slug lookup from news source name
+        newssource = newssource_lookup[newssource];
+    return newssource;
+}
+
+// function to fetch random key from a dictionary
+function fetch_random(obj) {
+    var temp_key, keys = [];
+    for(temp_key in obj) {
+       if(obj.hasOwnProperty(temp_key)) {
+           keys.push(temp_key);
+       }
+    }
+    return obj[keys[Math.floor(Math.random() * keys.length)]];
 }
 
 function getNews(session, cb) {
