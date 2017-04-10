@@ -7,9 +7,10 @@ var newssource_lookup = newsdict.slug_lookup;
 
 var newsHelper = function(session, args) {
   if(args.intent.score > 0.95){
-      //console.log(newssource_lookup);
+      // get news type i.e. top/popular/latest
+      var newstype = getNewsType(session, args);
+        console.log(newstype);
           getNews(session, function(topNews){
-              //messageUser(session,ttechcrunchopNews.articles[0].title);
               var newsCards = getallnewscards(session, topNews);
               // create reply with Carousel AttachmentLayout
               var reply = new builder.Message(session)
@@ -22,6 +23,20 @@ var newsHelper = function(session, args) {
   }else{
     util.messageUser(session,"Type \'help\' if you need assistance.");
   }
+}
+
+function getNewsType(session, args){
+    //setting default newstype to be top
+    var newstype = "top";
+    var entities = args.intent.entities;
+    console.log(entities);
+    for (entityinfo in entities){
+        if(entities[entityinfo]['type'] == 'newstype'){
+                newstype = entities[entityinfo]['entity'];
+                break;
+        }
+    }
+    return newstype;
 }
 
 function getNews(session, cb) {
