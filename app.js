@@ -35,10 +35,10 @@ bot.dialog('PNRStatus', function (session, args) {
 	matches: 'PNRStatus'
 });
 
-bot.dialog('TopNews', function (session, args) {
-  news.newsHelper(session, args);
+bot.dialog('GetNews', function (session, args) {
+  	news.newsHelper(session, args);
 }).triggerAction({
-	matches: 'TopNews'
+	matches: 'GetNews'
 });
 
 bot.dialog('Wiki', function (session, args) {
