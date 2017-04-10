@@ -1,9 +1,13 @@
 var request = require('request');
 var util = require('./util');
 var builder = require('botbuilder');
+var newsdict = require('./newsDict');
+
+var newssource_lookup = newsdict.slug_lookup;
 
 var newsHelper = function(session, args) {
   if(args.intent.score > 0.95){
+      //console.log(newssource_lookup);
           getNews(session, function(topNews){
               //messageUser(session,ttechcrunchopNews.articles[0].title);
               var newsCards = getallnewscards(session, topNews);

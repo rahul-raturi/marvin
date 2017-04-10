@@ -101,3 +101,5 @@ var slug_lookup = {
     "wired.de" : "wired-de",
     "wirtschafts woche" : "wirtschafts-woche"
 };
+
+module.exports.slug_lookup = slug_lookup;
