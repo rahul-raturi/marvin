@@ -3,6 +3,7 @@ require('dotenv-extended').load();
 var railway = require('./util/railwayHelper');
 var news = require('./util/newsHelper');
 var wiki = require('./util/wikiHelper');
+var pricecomp = require('./util/priceCompHelper');
 var spellService = require('./util/spell-service');
 
 var builder = require('botbuilder');
@@ -47,3 +48,23 @@ bot.dialog('Wiki', function (session, args) {
 }).triggerAction({
 	matches: 'Wiki'
 });
+
+bot.dialog('PriceCompare', function(session, args) {
+	pricecomp.priceCompHelper(session, args);
+}).triggerAction({
+	matches: 'PriceCompare'
+});
+
+bot.dialog('chooseProd', [
+    function(session) {
+        builder.Prompts.choice(session,
+            'Which option are you looking for?',
+            session.userData.products,
+            { listStyle: builder.ListStyle.button });
+    },
+	function(session,result){
+		session.userData.selectedProd = result.response.entity;
+		session.userData.itemindex = result.response.index;
+		pricecomp.selectedProdCompare(session);
+	}
+]);
