@@ -22,6 +22,14 @@ Presently supported queries
 
 * News
 * Railway PNR status
+* Searching any encyclopedia information
+* Price comparison 
+
+Adding soon
+-----------
+
+* A help dialog, for each kind of query
+* Movie and shows reviews
 
 **Note:** The bot is in the starting stage of development. I will enable issues
 section when I feel like it.
