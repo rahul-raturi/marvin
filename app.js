@@ -5,6 +5,7 @@ var news = require('./util/newsHelper');
 var wiki = require('./util/wikiHelper');
 var pricecomp = require('./util/priceCompHelper');
 var spellService = require('./util/spell-service');
+var util = require('./util/util');
 
 var builder = require('botbuilder');
 var restify = require('restify');
@@ -68,3 +69,23 @@ bot.dialog('chooseProd', [
 		pricecomp.selectedProdCompare(session);
 	}
 ]);
+
+bot.dialog('help', function(session, args) {
+	var helpPrompt = [
+		"Need help? Try these queries:",
+		"Sure. You can try following queries:",
+		"As of now, I'm capable to answer these queries:"
+	];
+	var sampleQueries = [
+		"Tell me about Sydney",
+		"Show me the status of PNR 2663924321",
+		"Who was Sir Don Bradman"
+		/* Add more sample queries here */
+	];
+	var rnd1 = Math.floor(Math.random()*helpPrompt.length)
+	var random_help_msg = helpPrompt[rnd1];
+	var message = random_help_msg + "<br>" + sampleQueries.join("<br>");
+	util.messageUser(session, message); 
+}).triggerAction({
+	matches: 'Help'
+});
