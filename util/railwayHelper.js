@@ -4,7 +4,8 @@ var request = require('request');
 var pnrHelper = function(session, args) {
 	if(args.intent.score > 0.99) {
 		console.log(args);
-		if(!args.intent.entities || args.intent.entities[0]['type'] != 'builtin.number' || args.intent.entities[0]['entity'].length != 10) {
+		console.log(args.intent.entities[0]['type']);
+		if(args.intent.entities.length === 0 || args.intent.entities[0]['type'] != 'builtin.number' || args.intent.entities[0]['entity'].length !== 10) {
 			util.messageUser(session, "Please provide a valid PNR number.");
 		}
 		else {
@@ -40,7 +41,7 @@ function pnrEnquiry(session, pnr, cb) {
 			cb(pnrStatus);
 		}
 		else {
-			util.messageUser(session, 'Please retry the query');
+			util.messageUser(session, 'Please recheck the PNR and retry query');
 		}
 	});
 }
