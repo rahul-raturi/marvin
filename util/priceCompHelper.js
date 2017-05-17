@@ -103,7 +103,7 @@ var getallshopcards = function(session, stores){
     var shopcards = [];
     for(i=0; i!=stores.length; i++){
         var product = session.userData.selectedProd;
-        var imgUrl = path.join(__dirname, '../images/');
+        var imgUrl = './images/';
         imgUrl += stores[i].website + '.png';
         var price = 'PRICE -> Rs. '+ stores[i].price;  
         //var stock = 'STOCK -> '+stores[i].stock;
