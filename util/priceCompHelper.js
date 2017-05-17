@@ -51,11 +51,12 @@ var priceCompHelper = function(session, args){
 var getproductcategoryandname = function(session, args){
     var prodname = "", prodcategory = "";
     var entities = args.intent.entities;
+    console.log(entities);
     for (entitynum in entities){
         if(entities[entitynum]['type'] == 'prod_category')
             prodcategory = slug_conversion(entities[entitynum]['entity'],"_");
-        else if(entities[entitynum]['type'].includes("builtin.encyclopedia") || 
-            entities[entitynum]['type'] == 'prod_search')
+        else if((entities[entitynum]['type'].includes("builtin.encyclopedia") || 
+            entities[entitynum]['type'] == 'prod_search') && prodname == "")
             prodname = entities[entitynum]['entity'];
     }
     return [prodname, prodcategory];
