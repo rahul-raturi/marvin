@@ -72,14 +72,24 @@ bot.dialog('chooseProd', [
 
 bot.dialog('help', function(session, args) {
 	var helpPrompt = [
-		"Need help? Try these queries:",
-		"Sure. You can try following queries:",
-		"As of now, I'm capable to answer these queries:"
+		"Need help? Try anything similar to these queries:",
+		"Sure. You can try anything similar to following queries:",
+		"As of now, I'm capable to answer anything similiar to these queries:"
 	];
 	var sampleQueries = [
 		"Tell me about Sydney",
+		"Google top news",
 		"Show me the status of PNR 2663924321",
-		"Who was Sir Don Bradman"
+		"Compare prices for iphone 7 in mobile phones",
+		"Price comparison in popup toasters for bajaj atx03 600",
+		"Latest news from techcrunch",
+		"Who was Sir Don Bradman",
+		"Get popular news from the hindu",
+		"News",
+		"Compare prices in mobile phones for samsung galaxy core",
+		"Price comparison for eureka forbes in water purifiers",
+		"Compare prices for Blackberry Priv in mobile phones",
+		"Popular news"
 		/* Add more sample queries here */
 	];
 	var rnd1 = Math.floor(Math.random()*helpPrompt.length)
@@ -88,4 +98,14 @@ bot.dialog('help', function(session, args) {
 	util.messageUser(session, message); 
 }).triggerAction({
 	matches: 'Help'
+});
+
+bot.dialog('Hello', function(session, args) {
+	var intromsg = "Hi there!<br>I'm MARVIN, a Multipurpose Informative Chatbot.<br>You want to:<br>Check your\
+	PNR status?<br>Know what's happening around the world?<br>Get information about anything that exists\
+	in this world?<br>Compare Prices for products available on different online stores?<br>I'm here to help you\
+	 out.<br>You can ask me for help anytime if you need assistance.<br>";
+	util.messageUser(session, intromsg);
+}).triggerAction({
+	matches: 'Hello'
 });
