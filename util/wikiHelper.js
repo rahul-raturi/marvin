@@ -2,7 +2,7 @@ var util = require('./util');
 var request = require('request');
 
 var wikiHelper = function(session, args) {
-	if(args.intent.score > 0.99) {
+	if(args.intent.score > 0.9) {
 		if(!args.intent.entities[0]) {
 			util.messageUser(session, "Please provide a title you're looking for.");
 		}
